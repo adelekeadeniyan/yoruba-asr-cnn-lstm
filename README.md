@@ -35,6 +35,6 @@ The dataset is streamed dynamically from the Hugging Face repository (`naijavoic
 ## Installation
 Clone the repository and install the required dependencies:
 ```bash
-git clone [https://github.com/YOUR-USERNAME/yoruba-asr-cnn-lstm.git](https://github.com/YOUR-USERNAME/yoruba-asr-cnn-lstm.git)
+git clone [https://github.com/adelekeadeniyan/yoruba-asr-cnn-lstm.git](https://github.com/adelekeadeniyan/yoruba-asr-cnn-lstm.git)
 cd yoruba-asr-cnn-lstm
 pip install -r requirements.txt
