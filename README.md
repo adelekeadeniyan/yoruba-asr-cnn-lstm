@@ -9,17 +9,28 @@ This repository provides the complete, reproducible PyTorch source code for trai
 * `model.py`: Defines the dual-stride convolutional and bidirectional LSTM architecture.
 * `dataset.py`: Handles streaming dataset retrieval from Hugging Face and on-the-fly Mel-spectrogram extraction.
 * `train.py`: Manages the training loop, gradient scaling, and CTC loss alignment.
-* `benchmark_hardware.py`: Quantifies model parameters, memory footprint, and edge inference latency to verify device efficiency.
-* `requirements.txt`: Lists essential library dependencies.
+* `benchmark_hardware.py`: Quantifies model parameters, memory footprint, and edge inference latency.
+* `evaluate_tones.py`: Implements the targeted tonal error analysis.
+* `augment_ablation.py`: Executes the feature-level perturbation and SpecAugment ablation study.
+* `qualitative_analysis.py`: Provides alignment comparisons for qualitative transcription evaluation.
 
-## Data Acquisition & Hugging Face Authentication
-The dataset is streamed dynamically from the repository without requiring full local disk storage. 
+## Research & Novelty Implementation
+This repository contains the full implementation for the experiments detailed in Section 4 (*Results and Findings*) of the manuscript:
 
-1. **Dataset Source:** The pipeline pulls audio arrays and transcripts from the `naijavoices/naijavoices-dataset` under the `yoruba-batch-1` configuration[cite: 1].
-2. **Hugging Face Token:** Because the dataset requires authentication, you must generate a user access token from your Hugging Face account[cite: 1]. 
-3. **Configuration:** 
-   * For interactive or notebook environments, save your token as a secret named `streaming-token` so the session can securely authenticate via `UserSecretsClient()`[cite: 1].
-   * For local terminal usage, authenticate via the CLI using `huggingface-cli login`.
+| LaTeX Section | Purpose | Associated Script |
+| :--- | :--- | :--- |
+| **4.4 Hardware Efficiency** | Measures edge deployment suitability | `benchmark_hardware.py` |
+| **4.5 Tonal Error Analysis** | Evaluates recognition of Yorùbá diacritics | `evaluate_tones.py` |
+| **4.6 Ablation Study** | Tests robustness of feature masking | `augment_ablation.py` |
+| **4.7 Qualitative Analysis** | Logs alignment and decoding accuracy | `qualitative_analysis.py` |
+
+## Data Acquisition & Authentication
+The dataset is streamed dynamically from the Hugging Face repository (`naijavoices/naijavoices-dataset`).
+
+1. **Hugging Face Token:** Generate a user access token from your Hugging Face account settings.
+2. **Configuration:** 
+   * **Notebook Environments:** Save your token as a secret named `streaming-token`. The system uses `UserSecretsClient()` to authenticate the session automatically.
+   * **Local Environment:** Run `huggingface-cli login` in your terminal to authenticate your session globally.
 
 ## Installation
 Clone the repository and install the required dependencies:
