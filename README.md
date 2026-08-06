@@ -10,6 +10,16 @@ This repository provides the complete, reproducible PyTorch source code for trai
 * `dataset.py`: Handles streaming dataset retrieval from Hugging Face and on-the-fly Mel-spectrogram extraction.
 * `train.py`: Manages the training loop, gradient scaling, and CTC loss alignment.
 * `benchmark_hardware.py`: Quantifies model parameters, memory footprint, and edge inference latency to verify device efficiency.
+* `requirements.txt`: Lists essential library dependencies.
+
+## Data Acquisition & Hugging Face Authentication
+The dataset is streamed dynamically from the repository without requiring full local disk storage. 
+
+1. **Dataset Source:** The pipeline pulls audio arrays and transcripts from the `naijavoices/naijavoices-dataset` under the `yoruba-batch-1` configuration[cite: 1].
+2. **Hugging Face Token:** Because the dataset requires authentication, you must generate a user access token from your Hugging Face account[cite: 1]. 
+3. **Configuration:** 
+   * For interactive or notebook environments, save your token as a secret named `streaming-token` so the session can securely authenticate via `UserSecretsClient()`[cite: 1].
+   * For local terminal usage, authenticate via the CLI using `huggingface-cli login`.
 
 ## Installation
 Clone the repository and install the required dependencies:
